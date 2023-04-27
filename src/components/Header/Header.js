@@ -4,6 +4,7 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import profile from "../../images/profile.svg";
 import {Link, useLocation} from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
 function Header() {
     const [openNavigation, setIsOpenBurgerMenu] = useState(false);
