@@ -20,7 +20,7 @@ function Header() {
         <header className={headerClassName}>
             <div className="header__container">
                 <Link to="/">
-                    <img className="logo" src={logo} alt="Логотоп"/>
+                    <img className="logo" src={logo} alt="Логотип"/>
                 </Link>
                 <div className="header__links">
                     {location.pathname === "/" ? ( // main
