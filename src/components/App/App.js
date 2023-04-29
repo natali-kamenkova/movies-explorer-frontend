@@ -3,6 +3,7 @@ import {Route, Switch, useLocation} from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 function App() {
     const location = useLocation();
@@ -29,7 +30,7 @@ function App() {
         <div className="page">
             {isNeedHeader() ? (<Header/>) : ("")}
             <Switch>
-                <Route exact path="/">
+                {/*<Route exact path="/">
                     <Main/>
                 </Route>
                 <Route exact path="/movies">
@@ -46,7 +47,7 @@ function App() {
                 </Route>
                 <Route exact path="/signup">
                     <Register/>
-                </Route>
+                </Route>*/}
                 <Route path="/*">
                     <PageNotFound/>
                 </Route>
