@@ -4,12 +4,8 @@
     position: relative;
 }
 
-.header_color_emerald {
-    background-color: #073042;
-}
-
-.header_color_dark {
-    background-color: #202020;
+.header_color {
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .header__container {
@@ -63,7 +59,7 @@
 .header__link_color_green {
     width: 76px;
     margin-left: 30px;
-    background-color: #3DDC84;
+    background-color: #52b497;
     border-radius: 3px;
     color: #000000;
 }
