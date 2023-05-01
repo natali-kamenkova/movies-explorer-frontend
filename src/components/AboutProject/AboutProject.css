@@ -75,14 +75,14 @@
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
-    line-height: 13px;
+    line-height: 25px;
     text-align: center;
     padding-top: 11px;
 }
 
 .about-project__illustration_image_back {
     width: 20%;
-    background-color: #52b497;
+    background-color: #3DDC84;
     color: #000000;
 }
 
@@ -96,14 +96,14 @@
     width: 20%;
     color: #8B8B8B;
     font-weight: 500;
-    margin-top: 14px;
+    margin-top: 3px;
 }
 
 .about-project__illustration_image_front-text {
     width: 80%;
     color: #8B8B8B;
     font-weight: 500;
-    margin-top: 14px;
+    margin-top: 3px;
 }
 
 @media (max-width: 769px) {
