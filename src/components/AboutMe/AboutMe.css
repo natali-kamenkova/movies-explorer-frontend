@@ -179,7 +179,7 @@
 
     .about-me__photo {
         width: 292px;
-        height: 352px;
-        padding-bottom: 40px;
+        height: 292px;
+        margin-bottom: 40px;
     }
 }
