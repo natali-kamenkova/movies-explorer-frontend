@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react";
 import "./Header.css";
-import logo from "../../images/logo.svg";
+import logo from "../../images/diploma_logo.png";
 import profile from "../../images/profile.svg";
 import {Link, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";

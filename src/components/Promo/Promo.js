@@ -1,6 +1,6 @@
 import React from "react";
 import "./Promo.css";
-import promo from "../../images/promo.svg";
+import promo from "../../images/promo.png";
 
 function Promo() {
     return (<section className="promo">
