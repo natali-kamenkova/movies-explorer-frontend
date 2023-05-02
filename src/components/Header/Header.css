@@ -5,13 +5,13 @@
 }
 
 .header_color {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: #073042;
 }
 
 .header__container {
     margin: 0 auto;
     padding: 21px 0;
-    width: 100%;
+    width: 90%;
     max-width: 1140px;
     min-width: 708px;
     display: flex;
