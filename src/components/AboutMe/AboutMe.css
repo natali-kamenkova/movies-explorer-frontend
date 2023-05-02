@@ -15,8 +15,8 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: -0.04em;
-    color: #FFFFFF;
-    border-bottom: 1px solid #DADADA;
+    color: #000000;
+    border-bottom: 1px solid #000000;
     padding: 0 0 23px;
 }
 
@@ -48,7 +48,7 @@
     font-size: 50px;
     line-height: 58px;
     letter-spacing: -0.04em;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 .about-me__about {
@@ -59,7 +59,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
-    color: #FFFFFF;
+    color: #000000;
     mix-blend-mode: normal;
 }
 
@@ -70,7 +70,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color: #FFFFFF;
+    color: #000000;
     mix-blend-mode: normal;
 }
 
@@ -79,7 +79,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #FFFFFF;
+    color: #000000;
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.3s ease;

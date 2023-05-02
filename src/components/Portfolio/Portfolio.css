@@ -15,7 +15,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-    color: #8B8B8B;
+    color: #A0A0A0;
 }
 
 .portfolio__links {
@@ -34,7 +34,7 @@
     transition: opacity 0.3s ease;
     padding-top: 20px;
     padding-bottom: 19px;
-    border-bottom: 1px solid #424242;
+    border-bottom: 1px solid #E6E6E6;
 }
 
 .portfolio__link-container:last-of-type {
@@ -62,7 +62,7 @@
     font-size: 30px;
     line-height: 50px;
     letter-spacing: -0.04em;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 .portfolio__link-arrow {
@@ -72,7 +72,7 @@
     font-size: 30px;
     line-height: 60px;
     letter-spacing: -0.04em;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 @media (max-width: 769px) {
