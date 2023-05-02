@@ -1,61 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import React from "react";
+import {Link} from "react-router-dom";
+import logo from "../../images/logo1.png";
+import "./Login.css";
 
-function Login({isLoggedIn, onLogin }) {
-
-  const [userData, setUserData] = useState({
-    email: '',
-    password: ''
-  });
-  const [message, setMessage] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value })
-  }
- 
-  const handleSubmit = (e)=> {
-    
-    e.preventDefault();
-    if(!userData.email || !userData.password) {
-      return;
-    }
-    onLogin(userData.email, userData.password);
-    console.log(userData)
-    
-  }
-
-  if(isLoggedIn) {
-    return <Redirect to="/"/>
-  }
-
-  return (
-    <div  className='login__container '>
-      <p className='login__title'>Вход</p>
-      <form onSubmit={handleSubmit} className='popup__form login__form'>
-        <input
-          id='useremail'
-          name='email'
-          className='popup__input login__input'
-          placeholder='Email'
-          type='email'
-          value={userData.email}
-          onChange={handleChange}></input>
-        <input
-          id='password'
-          name='password'
-          className='popup__input login__input'
-          placeholder='Пароль'
-          type='password'
-          value={userData.password}
-          onChange={handleChange}></input>
-        <button type="submit" className="popup__submit login__submit">
-          Войти
-        </button>
-      </form>
-
-    </div>
-  )
+function Login() {
+    return (<section className="login">
+        <div className="login__container">
+            <Link to="/">
+                <img className="logo" src={logo} alt="Логотоп"/>
+            </Link>
+            <h3 className="login__title">Рады видеть!</h3>
+            <form name="login" className="login__form">
+                <fieldset className="login__fieldset">
+                    <label className="login__label" htmlFor="email">
+                        E-mail
+                    </label>
+                    <input
+                        className="login__input"
+                        type="email"
+                        name="email"
+                        id="email"
+                        required
+                        placeholder="Ваша почта"
+                    />
+                </fieldset>
+                <span className="login__error" id="email-error"></span>
+                <fieldset className="login__fieldset">
+                    <label className="login__label" htmlFor="password">
+                        Пароль
+                    </label>
+                    <input
+                        className="login__input"
+                        type="password"
+                        name="password"
+                        id="password"
+                        required
+                        placeholder="Ваш пароль"
+                    />
+                </fieldset>
+                <span className="login__error" id="password-error"></span>
+                <button className="login__button" type="submit">
+                    Войти
+                </button>
+            </form>
+            <div className="login__signin">
+                <p className="login__text">Ещё не зарегистрированы?</p>
+                <Link to="/signup" className="login__link">
+                    Регистрация
+                </Link>
+            </div>
+        </div>
+    </section>);
 }
 
 export default Login;
