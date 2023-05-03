@@ -12,7 +12,8 @@ function AboutMe() {
                     <p className="about-me__name">Наталия</p>
                     <p className="about-me__about">Фронтенд-разработчик, 51 год</p>
                     <p className="about-me__description">
-                        Родилась в городе Ростове на Длну.
+                        Родилась в городе Ростове на Дону. Lorem Ipsum является текст-заполнитель обычно используется в графических, 
+                        печать и издательской индустрии для предварительного просмотра макета и визуальных макетах.
                     </p>
                     <a className="about-me__github" href="https://github.com/natali-kamenkova">
                         Github
