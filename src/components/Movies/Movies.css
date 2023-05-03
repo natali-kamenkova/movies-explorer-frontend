@@ -8,9 +8,9 @@
 .movies__more-button {
     margin: 60px 0 80px;
     padding: 0;
-    border: none;
+    border: 1px solid #E8E8E8;
     border-radius: 6px;
-    background-color: #2BE080;
+    background-color: #ffffff;
     width: 320px;
     height: 36px;
     font-style: normal;
@@ -18,7 +18,7 @@
     font-size: 12px;
     line-height: 15px;
     text-align: center;
-    color: #ffffff;
+    color: #000000;
     cursor: pointer;
     transition: opacity 0.3s ease;
 }
