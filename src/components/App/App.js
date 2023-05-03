@@ -8,6 +8,8 @@ import Main from "../Main/Main";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
     const location = useLocation();
@@ -36,15 +38,12 @@ function App() {
             <Route exact path="/profile">
                 <Profile/>
             </Route>
-            {/* <Route exact path="/movies">
-                    <Movies/>
-                </Route>
-                <Route exact path="/saved-movies">
-                    <SavedMovies/>
-                </Route>
-                
-                
-               */}
+            <Route exact path="/movies">
+                <Movies/>
+            </Route>
+            <Route exact path="/saved-movies">
+                <SavedMovies/>
+            </Route>
             <Route path="/*">
                 <PageNotFound/>
             </Route>
