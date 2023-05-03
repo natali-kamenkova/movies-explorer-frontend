@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import "./Header.css";
 import logo from "../../images/logo1.png";
-import profile from "../../images/profile.svg";
+import profile from "../../images/profile.png";
 import {Link, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
@@ -15,7 +15,9 @@ function Header() {
         setIsOpenBurgerMenu(!openNavigation);
     }
 
-    return (<header className={"header header_color"}>
+    const headerClassName = `header ${location.pathname === "/" ? "header_color_dark" : "header_color_white"}`;
+
+    return (<header className={headerClassName}>
         <div className="header__container">
             <Link to="/">
                 <img className="logo" src={logo} alt="Логотип"/>
@@ -39,13 +41,13 @@ function Header() {
                 ) : (<>
                     <Link
                         to="/movies"
-                        className="header__link header__link_color_white header__link_hidden"
+                        className="header__link header__link_color_dark header__link_hidden"
                     >
                         Фильмы
                     </Link>
                     <Link
                         to="/saved-movies"
-                        className="header__link header__link_right header__link_color_white header__link_hidden"
+                        className="header__link header__link_right header__link_color_dark header__link_hidden"
                     >
                         Сохранённые фильмы
                     </Link>

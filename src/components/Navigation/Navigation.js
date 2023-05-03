@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import profile from "../../images/profile.svg";
+import profile from "../../images/profile.png";
 import "./Navigation.css";
 
 function Navigation({handleBurgerMenuButton}) {
