@@ -87,6 +87,7 @@
     height: 44px;
     opacity: 1;
     background-image: url(/src/images/burger.svg);
+    background-color: rgba(255, 255, 255, 0);
     background-repeat: no-repeat;
     background-position: center;
     border: none;
