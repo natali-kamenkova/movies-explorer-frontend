@@ -2,7 +2,7 @@ import React from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
-import {savedMovies} from "../../utils/movies";
+import {savedMovies} from "../../utils/Movies";
 
 function SavedMovies() {
     return (<section className="saved-movies">

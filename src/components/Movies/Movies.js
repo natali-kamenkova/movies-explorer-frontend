@@ -2,7 +2,7 @@ import React from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Movies.css";
-import {movies} from "../../utils/movies";
+import {movies} from "../../utils/Movies";
 
 function Movies() {
     return (<section className="movies">
