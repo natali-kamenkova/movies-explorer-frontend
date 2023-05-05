@@ -91,7 +91,7 @@
 
 .about-me__photo {
     width: 270px;
-    height: 270px;
+    height: 327px;
     border-radius: 10px;
 }
 
@@ -128,7 +128,8 @@
 
     .about-me__photo {
         width: 255px;
-        height: 255px;
+        height: 307px;
+        margin-bottom: 40px;
     }
 }
 
@@ -179,7 +180,7 @@
 
     .about-me__photo {
         width: 292px;
-        height: 292px;
+        height: 352px;
         margin-bottom: 40px;
     }
 }
