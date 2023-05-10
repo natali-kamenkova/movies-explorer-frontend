@@ -1,7 +1,14 @@
 class MainApi {
-    constructor(param) {
-
+    constructor({baseUrl}) {
+        this._baseUrl = baseUrl;
     }
+
+    _checkServerResponseStatus = res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    };
 
 }
 
