@@ -1,5 +1,13 @@
-import React from "react";
-import {Route, Switch, useLocation} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+
+import {
+    Redirect,
+    Route,
+    Switch,
+    useHistory,
+    useLocation,
+} from "react-router-dom";
+
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -10,6 +18,15 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+
+import {CurrentUserContext} from "../../context/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import success from "../../images/success.svg";
+import wrong from "../../images/wrong.svg";
+import {auth} from "../../utils/auth";
+import {mainApi} from "../../utils/MainApi";
+import {moviesApi} from "../../utils/MoviesApi";
+
 
 function App() {
     const location = useLocation();
