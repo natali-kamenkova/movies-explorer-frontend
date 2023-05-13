@@ -7,3 +7,9 @@ export const DEFAULT_MESSAGE_LOGIN = "Очень жаль, произошла о
 export const DEFAULT_MESSAGE_UPDATE = "Очень жаль, произошла ошибка при изменении данных пользователя.";
 export const WELCOME_MESSAGE = "Добро пожаловать!";
 export const SUCCESSFUL_UPDATE_MESSAGE = "Данные профиля успешно обновлены!";
+export const CONFLICT_MESSAGE_LIKE = "У вас нет прав для этого";
+export const SHORT_MOVIES_DURATION = 40;
+export const NEED_SEARCH_MESSAGE = "Для поиска нужно ввести ключевое слово";
+export const NOT_FOUND_SEARCH_MESSAGE = "Ничего не найдено";
+
+

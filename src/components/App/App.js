@@ -31,13 +31,17 @@ import {moviesApi} from "../../utils/MoviesApi";
 import {
     CONFLICT_ERROR,
     CONFLICT_MESSAGE,
+    CONFLICT_MESSAGE_LIKE,
     DEFAULT_MESSAGE_LOGIN,
     DEFAULT_MESSAGE_REGISTER,
     DEFAULT_MESSAGE_UPDATE,
     INTERNAL_SERVER_ERROR,
     INTERNAL_SERVER_MESSAGE,
+    NEED_SEARCH_MESSAGE,
+    NOT_FOUND_SEARCH_MESSAGE,
+    SHORT_MOVIES_DURATION,
     SUCCESSFUL_UPDATE_MESSAGE,
-    WELCOME_MESSAGE,
+    WELCOME_MESSAGE
 } from "../../utils/constants";
 
 function App() {
@@ -53,6 +57,13 @@ function App() {
     const [errorMessageInSearch, setErrorMessageInSearch] = useState("");
     const [errorMessageInProfile, setErrorMessageInProfile] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    const [beatFilmMovies, setBeatFilmMovies] = useState([]);
+    const [searchedMovies, setSearchedMovies] = useState([]);
+    const [favoriteMovies, setIsFavoriteMovies] = useState([]);
+    const [keyword, setKeyword] = useState("");
+    const [isChecked, setIsChecked] = useState(false);
+    const [searchResult, setSearchResult] = useState("");
 
     useEffect(() => {
         checkToken();
@@ -92,7 +103,6 @@ function App() {
         }
     }, [loggedIn]);
 
-    // регистрация
     function handleRegisterSubmit(name, email, password) {
         setIsLoading(true);
         auth
@@ -126,7 +136,6 @@ function App() {
             });
     }
 
-    // вход
     function handleLoginSubmit(email, password) {
         setIsLoading(true);
         auth
@@ -161,7 +170,6 @@ function App() {
             });
     }
 
-    // редактирование
     function handleUpdateUser(data) {
         setIsLoading(true);
         mainApi
@@ -194,28 +202,26 @@ function App() {
             });
     }
 
-    // исчезнование
     function closeInfoTooltip() {
         setIsOpenInfoTooltip(false);
     }
 
-    // выход
     function handleExitSubmit() {
-        localStorage.removeItem("token"); // удаляем токен
+        localStorage.removeItem("token");
         localStorage.removeItem("searchedMovies");
         localStorage.removeItem("movies");
         localStorage.removeItem("loggedIn");
         localStorage.removeItem("keyword");
         localStorage.removeItem("isChecked");
-        setBeatFilmMovies([]); // нет массива фильмов со стороннего ресурса
-        setIsFavoriteMovies([]); // нет массива любимых фильмов
-        setSearchedMovies([]); // нет найдены фильмов
-        setKeyword(""); // нет ключевых слов
-        setErrorMessage(""); // нет ошибки при регистрации и тд
-        setLoggedIn(false); // не залогинен
-        setSearchResult(""); // не результатов поиска
+        setBeatFilmMovies([]);
+        setIsFavoriteMovies([]);
+        setSearchedMovies([]);
+        setKeyword("");
+        setErrorMessage("");
+        setLoggedIn(false);
+        setSearchResult("");
         setCurrentUser({});
-        history.push("/"); // отправляем на главную страницу
+        history.push("/");
     }
 
     useEffect(() => {
@@ -232,6 +238,131 @@ function App() {
             setSearchedMovies(result);
         }
     }
+
+    useEffect(() => {
+        if (beatFilmMovies.length > 0) {
+            const movies = search(beatFilmMovies, keyword, isChecked);
+            localStorage.setItem("searchedMovies", JSON.stringify(movies));
+            localStorage.setItem("keyword", keyword);
+            localStorage.setItem("isChecked", isChecked);
+            setSearchedMovies(movies);
+        }
+    }, [beatFilmMovies, keyword, isChecked]);
+
+    function submitSearch(keyword, isChecked) {
+        if (keyword !== "") {
+            setTimeout(() => setIsLoading(false), 2000);
+            setErrorMessage("");
+            setKeyword(keyword);
+            setIsChecked(isChecked);
+            const movies = JSON.parse(localStorage.getItem("movies"));
+            if (!movies) {
+                setIsLoading(true);
+                getBeatMovies();
+            } else {
+                setBeatFilmMovies(movies);
+            }
+        } else {
+            setTimeout(() => setIsLoading(false), 1000);
+            setErrorMessageInSearch(NEED_SEARCH_MESSAGE);
+            setSearchedMovies([]);
+        }
+    }
+
+    function getBeatMovies() {
+        setIsLoading(true);
+        moviesApi
+            .getBeatfilmMovies()
+            .then((data) => {
+                localStorage.setItem("movies", JSON.stringify(data));
+                setBeatFilmMovies(data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                setIsOpenInfoTooltip(true);
+                setIsImageForInfoTooltip(wrong);
+                setIsTextForInfoTooltip(err);
+                setTimeout(() => {
+                    setIsOpenInfoTooltip(false);
+                }, 2000);
+            });
+    }
+
+    function search(movies, keyword, isChecked) {
+        let result;
+        let shortMoviesArray = movies;
+        if (isChecked) {
+            shortMoviesArray = shortMoviesArray.filter(
+                (movie) => movie.duration <= SHORT_MOVIES_DURATION
+            );
+        }
+        result = shortMoviesArray.filter((movie) => {
+            return (
+                movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
+                movie.nameEN.toLowerCase().includes(keyword.toLowerCase())
+            );
+        });
+        if (result.length === 0) {
+            setSearchResult(NOT_FOUND_SEARCH_MESSAGE);
+        }
+        return result;
+    }
+
+    const handleLikeClick = (movie) => {
+        const like = favoriteMovies.some((i) => i.movieId === movie.id);
+        if (!like) {
+            mainApi
+                .createMovie(movie)
+                .then((res) => {
+                    setIsFavoriteMovies((movies) => [...movies, res.data]);
+                })
+                .catch((err) => {
+                    if (err.includes(CONFLICT_ERROR)) {
+                        handleExitSubmit();
+                        setIsOpenInfoTooltip(true);
+                        setIsImageForInfoTooltip(wrong);
+                        setIsTextForInfoTooltip(CONFLICT_MESSAGE_LIKE);
+                        setTimeout(() => {
+                            setIsOpenInfoTooltip(false);
+                        }, 2000);
+                    } else {
+                        setIsOpenInfoTooltip(true);
+                        setIsImageForInfoTooltip(wrong);
+                        setIsTextForInfoTooltip(INTERNAL_SERVER_MESSAGE);
+                        setTimeout(() => {
+                            setIsOpenInfoTooltip(false);
+                        }, 2000);
+                    }
+                });
+        } else {
+            const dislike = favoriteMovies.find((i) => i.movieId === movie.id);
+            handleDislikeClick(dislike);
+        }
+    };
+
+    function handleDislikeClick(movie) {
+        mainApi
+            .deleteMovie(movie._id)
+            .then(() => {
+                setIsFavoriteMovies(
+                    favoriteMovies.filter((data) => data._id !== movie._id)
+                );
+            })
+            .catch(() => {
+                setIsOpenInfoTooltip(true);
+                setIsImageForInfoTooltip(wrong);
+                setIsTextForInfoTooltip(INTERNAL_SERVER_MESSAGE);
+                setTimeout(() => {
+                    setIsOpenInfoTooltip(false);
+                }, 2000);
+            });
+    }
+
+    const isLiked = (data) => {
+        return favoriteMovies.some(
+            (i) => i.movieId === data.id && i.owner === currentUser?._id
+        );
+    };
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
