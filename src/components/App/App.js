@@ -27,10 +27,27 @@ import {auth} from "../../utils/auth";
 import {mainApi} from "../../utils/MainApi";
 import {moviesApi} from "../../utils/MoviesApi";
 
+import {
+    CONFLICT_ERROR,
+    CONFLICT_MESSAGE,
+    DEFAULT_MESSAGE_LOGIN,
+    DEFAULT_MESSAGE_REGISTER,
+    DEFAULT_MESSAGE_UPDATE,
+    INTERNAL_SERVER_ERROR,
+    INTERNAL_SERVER_MESSAGE,
+    SUCCESSFUL_UPDATE_MESSAGE,
+    WELCOME_MESSAGE,
+} from "../../utils/constants";
 
 function App() {
-    const location = useLocation();
-
+    const location = useLocation(); 
+    const history = useHistory();
+    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem("loggedIn")));
+    const [currentUser, setCurrentUser] = useState({});
+    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessageInRegister, setErrorMessageInRegister] = useState("");
+    const [errorMessageInProfile, setErrorMessageInProfile] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     function isNeedHeader() {
         return (location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile');
     }
