@@ -56,6 +56,10 @@
     height: 32px;
 }
 
+.header__link_checked {
+    font-weight: 500;
+}
+
 .header__link_color_white {
     color: #FFFFFF;
 }
