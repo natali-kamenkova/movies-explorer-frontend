@@ -309,12 +309,12 @@ function App() {
     }
 
     const handleLikeClick = (movie) => {
-        const like = favoriteMovies.some((i) => i.movieId === movie.id);
+        const like = favoriteMovies?.some((i) => i?.movieId === movie.id);
         if (!like) {
             mainApi
                 .createMovie(movie)
                 .then((res) => {
-                    setIsFavoriteMovies((movies) => [...movies, res.data]);
+                    setIsFavoriteMovies((movies) => [movies, res.data]);
                 })
                 .catch((err) => {
                     if (err.includes(CONFLICT_ERROR)) {
@@ -359,8 +359,8 @@ function App() {
     }
 
     const isLiked = (data) => {
-        return favoriteMovies.some(
-            (i) => i.movieId === data.id && i.owner === currentUser?._id
+        return favoriteMovies?.some(
+            (i) => i?.movieId === data.id && i.owner === currentUser?._id
         );
     };
 

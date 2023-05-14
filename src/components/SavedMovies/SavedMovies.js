@@ -66,7 +66,7 @@ function SavedMovies({movies, isLiked, handleDislike}) {
                 <Preloader/>
             ) : (
                 <>
-                    {movies.length === 0 ? (
+                    {movies == null || movies.length === 0 ? (
                         <UserInfo image={like} title="Вы еще не добавили фильмы в избранное"/>
                     ) : (
                         <>
