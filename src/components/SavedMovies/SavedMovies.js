@@ -3,6 +3,9 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 import Preloader from "../Preloader/Preloader";
+import like from "../../images/like.svg";
+import dislike from "../../images/dislike.svg";
+
 import {
     DURATION_SHORT,
     MESSAGE_NOTHING_FOUND,
@@ -64,11 +67,11 @@ function SavedMovies({movies, isLiked, handleDislike}) {
             ) : (
                 <>
                     {movies.length === 0 ? (
-                        <UserInfo image={} title="Вы еще не добавили фильмы в избранное"/>
+                        <UserInfo image={like} title="Вы еще не добавили фильмы в избранное"/>
                     ) : (
                         <>
                             {isFinish && movies.length !== 0 && searchedMovies.length === 0 ? (
-                                <UserInfo image={} title="Вы еще не добавили фильмы в избранное"/>
+                                <UserInfo image={dislike} title={MESSAGE_NOTHING_FOUND}/>
                             ) : (
                                 <MoviesCardList
                                     movies={isFinish ? searchedMovies : movies}

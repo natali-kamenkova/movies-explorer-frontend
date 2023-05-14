@@ -5,6 +5,8 @@ import SearchForm from "../SearchForm/SearchForm";
 import UserInfo from "../UserInfo/UserInfo";
 import "./Movies.css";
 import {START_HINT} from "../../utils/constants";
+import like from "../../images/like.svg";
+import dislike from "../../images/dislike.svg";
 
 function Movies({
                     handleSearch,
@@ -36,10 +38,10 @@ function Movies({
                 <>
                     {searchResult
                         ? movies.length === 0 && (
-                        <UserInfo image={} title={searchResult}/>
+                        <UserInfo image={like} title={searchResult}/>
                     )
                         : movies.length === 0 && (
-                        <UserInfo image={} title={START_HINT}/>
+                        <UserInfo image={dislike} title={START_HINT}/>
                     )}
 
                     {movies.length !== 0 && (
