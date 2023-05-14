@@ -1,6 +1,7 @@
 import React from "react";
 import {useLocation} from "react-router-dom";
 import "./MoviesCard.css";
+import {getTimeFromMinutes} from "../../utils/durationFunc";
 
 function MoviesCard({movie, isLiked, handleLike, handleDislike}) {
     const location = useLocation();
@@ -39,6 +40,7 @@ function MoviesCard({movie, isLiked, handleLike, handleDislike}) {
                     />
                 )}
             </div>
+            <p className="card__duration">{getTimeFromMinutes(movie.duration)}</p>
         </div>
     );
 }
