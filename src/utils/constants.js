@@ -11,5 +11,9 @@ export const CONFLICT_MESSAGE_LIKE = "У вас нет прав для этог�
 export const SHORT_MOVIES_DURATION = 40;
 export const NEED_SEARCH_MESSAGE = "Для поиска нужно ввести ключевое слово";
 export const NOT_FOUND_SEARCH_MESSAGE = "Ничего не найдено";
-
+export const LARGE_WIDTH = 1280;
+export const MEDIUM_WIDTH = 768;
+export const LARGE_ORIGINAL_AMOUNT = 12;
+export const MEDIUM_ORIGINAL_AMOUNT = 10;
+export const SMALL_ORIGINAL_AMOUNT = 5;
 
