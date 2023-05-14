@@ -4,9 +4,10 @@ import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 import Preloader from "../Preloader/Preloader";
 import {
-    SHORT_MOVIES_DURATION,
-    NOT_FOUND_SEARCH_MESSAGE,
+    DURATION_SHORT,
+    MESSAGE_NOTHING_FOUND,
 } from "../../utils/constants";
+import UserInfo from "../UserInfo/UserInfo";
 
 function SavedMovies({movies, isLiked, handleDislike}) {
     const [searchedMovies, setSearchedMovies] = useState([]);
@@ -21,7 +22,7 @@ function SavedMovies({movies, isLiked, handleDislike}) {
         let shortMoviesArray = movies;
         if (isChecked) {
             shortMoviesArray = shortMoviesArray.filter(
-                (movie) => movie.duration <= SHORT_MOVIES_DURATION
+                (movie) => movie.duration <= DURATION_SHORT
             );
         }
         result = shortMoviesArray.filter((movie) => {
@@ -63,11 +64,11 @@ function SavedMovies({movies, isLiked, handleDislike}) {
             ) : (
                 <>
                     {movies.length === 0 ? (
-                        <Preloader/>
+                        <UserInfo image={} title="Вы еще не добавили фильмы в избранное"/>
                     ) : (
                         <>
                             {isFinish && movies.length !== 0 && searchedMovies.length === 0 ? (
-                                <Preloader/>
+                                <UserInfo image={} title="Вы еще не добавили фильмы в избранное"/>
                             ) : (
                                 <MoviesCardList
                                     movies={isFinish ? searchedMovies : movies}

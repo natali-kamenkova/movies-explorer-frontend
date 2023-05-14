@@ -30,18 +30,18 @@ import {moviesApi} from "../../utils/MoviesApi";
 
 import {
     CONFLICT_ERROR,
-    CONFLICT_MESSAGE,
-    CONFLICT_MESSAGE_LIKE,
-    DEFAULT_MESSAGE_LOGIN,
-    DEFAULT_MESSAGE_REGISTER,
-    DEFAULT_MESSAGE_UPDATE,
+    MESSAGE_EMAIL_ALREADY_EXISTS,
+    MESSAGE_CANT_LIKE,
+    MESSAGE_LOGIN_FAIL,
+    MESSAGE_REGISTER_FAIL,
+    MESSAGE_UPDATE_FAIL,
     INTERNAL_SERVER_ERROR,
-    INTERNAL_SERVER_MESSAGE,
-    NEED_SEARCH_MESSAGE,
-    NOT_FOUND_SEARCH_MESSAGE,
-    SHORT_MOVIES_DURATION,
-    SUCCESSFUL_UPDATE_MESSAGE,
-    WELCOME_MESSAGE
+    MESSAGE_INTERNAL_ERROR,
+    MESSAGE_NO_KEY,
+    MESSAGE_NOTHING_FOUND,
+    DURATION_SHORT,
+    MESSAGE_USER_UPDATED,
+    MESSAGE_WELCOME
 } from "../../utils/constants";
 
 function App() {
@@ -115,19 +115,19 @@ function App() {
             .then(() => history.push("/movies"))
             .catch((err) => {
                 if (err.includes(CONFLICT_ERROR)) {
-                    setErrorMessageInRegister(CONFLICT_MESSAGE);
+                    setErrorMessageInRegister(MESSAGE_EMAIL_ALREADY_EXISTS);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessageInRegister("");
                     }, 1500);
                 } else if (err.includes(INTERNAL_SERVER_ERROR)) {
-                    setErrorMessageInRegister(INTERNAL_SERVER_MESSAGE);
+                    setErrorMessageInRegister(MESSAGE_INTERNAL_ERROR);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessageInRegister("");
                     }, 1500);
                 } else {
-                    setErrorMessageInRegister(DEFAULT_MESSAGE_REGISTER);
+                    setErrorMessageInRegister(MESSAGE_REGISTER_FAIL);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessageInRegister("");
@@ -147,7 +147,7 @@ function App() {
                 setIsOpenInfoTooltip(true);
                 setErrorMessage("");
                 setIsImageForInfoTooltip(success);
-                setIsTextForInfoTooltip(WELCOME_MESSAGE);
+                setIsTextForInfoTooltip(MESSAGE_WELCOME);
                 setTimeout(() => {
                     setIsOpenInfoTooltip(false);
                 }, 2000);
@@ -155,13 +155,13 @@ function App() {
             .then(() => history.push("/movies"))
             .catch((err) => {
                 if (err.includes(INTERNAL_SERVER_ERROR)) {
-                    setErrorMessage(INTERNAL_SERVER_MESSAGE);
+                    setErrorMessage(MESSAGE_INTERNAL_ERROR);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessage("");
                     }, 1500);
                 } else {
-                    setErrorMessage(DEFAULT_MESSAGE_LOGIN);
+                    setErrorMessage(MESSAGE_LOGIN_FAIL);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessage("");
@@ -178,7 +178,7 @@ function App() {
                 setCurrentUser(userData.data);
                 setIsOpenInfoTooltip(true);
                 setIsImageForInfoTooltip(success);
-                setIsTextForInfoTooltip(SUCCESSFUL_UPDATE_MESSAGE);
+                setIsTextForInfoTooltip(MESSAGE_USER_UPDATED);
                 setErrorMessageInProfile("");
                 setTimeout(() => {
                     setIsOpenInfoTooltip(false);
@@ -187,13 +187,13 @@ function App() {
             })
             .catch((err) => {
                 if (err.includes(INTERNAL_SERVER_ERROR)) {
-                    setErrorMessageInProfile(INTERNAL_SERVER_MESSAGE);
+                    setErrorMessageInProfile(MESSAGE_INTERNAL_ERROR);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessageInProfile("");
                     }, 1500);
                 } else {
-                    setErrorMessageInProfile(DEFAULT_MESSAGE_UPDATE);
+                    setErrorMessageInProfile(MESSAGE_UPDATE_FAIL);
                     setIsLoading(false);
                     setTimeout(() => {
                         setErrorMessageInProfile("");
@@ -264,7 +264,7 @@ function App() {
             }
         } else {
             setTimeout(() => setIsLoading(false), 1000);
-            setErrorMessageInSearch(NEED_SEARCH_MESSAGE);
+            setErrorMessageInSearch(MESSAGE_NO_KEY);
             setSearchedMovies([]);
         }
     }
@@ -293,7 +293,7 @@ function App() {
         let shortMoviesArray = movies;
         if (isChecked) {
             shortMoviesArray = shortMoviesArray.filter(
-                (movie) => movie.duration <= SHORT_MOVIES_DURATION
+                (movie) => movie.duration <= DURATION_SHORT
             );
         }
         result = shortMoviesArray.filter((movie) => {
@@ -303,7 +303,7 @@ function App() {
             );
         });
         if (result.length === 0) {
-            setSearchResult(NOT_FOUND_SEARCH_MESSAGE);
+            setSearchResult(MESSAGE_NOTHING_FOUND);
         }
         return result;
     }
@@ -321,14 +321,14 @@ function App() {
                         handleExitSubmit();
                         setIsOpenInfoTooltip(true);
                         setIsImageForInfoTooltip(wrong);
-                        setIsTextForInfoTooltip(CONFLICT_MESSAGE_LIKE);
+                        setIsTextForInfoTooltip(MESSAGE_CANT_LIKE);
                         setTimeout(() => {
                             setIsOpenInfoTooltip(false);
                         }, 2000);
                     } else {
                         setIsOpenInfoTooltip(true);
                         setIsImageForInfoTooltip(wrong);
-                        setIsTextForInfoTooltip(INTERNAL_SERVER_MESSAGE);
+                        setIsTextForInfoTooltip(MESSAGE_INTERNAL_ERROR);
                         setTimeout(() => {
                             setIsOpenInfoTooltip(false);
                         }, 2000);
@@ -351,7 +351,7 @@ function App() {
             .catch(() => {
                 setIsOpenInfoTooltip(true);
                 setIsImageForInfoTooltip(wrong);
-                setIsTextForInfoTooltip(INTERNAL_SERVER_MESSAGE);
+                setIsTextForInfoTooltip(MESSAGE_INTERNAL_ERROR);
                 setTimeout(() => {
                     setIsOpenInfoTooltip(false);
                 }, 2000);

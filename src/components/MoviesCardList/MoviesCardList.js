@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {
-    LARGE_ORIGINAL_AMOUNT,
+    MAX_LOAD,
     LARGE_WIDTH,
-    MEDIUM_ORIGINAL_AMOUNT,
+    MED_LOAD,
     MEDIUM_WIDTH,
-    SMALL_ORIGINAL_AMOUNT,
+    MIN_LOAD,
 } from "../../utils/constants";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
@@ -24,11 +24,11 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
         window.addEventListener("resize", screenWidthChange);
         setWidth(window.innerWidth);
         if (width >= LARGE_WIDTH) {
-            setAmount(LARGE_ORIGINAL_AMOUNT);
+            setAmount(MAX_LOAD);
         } else if (width >= MEDIUM_WIDTH) {
-            setAmount(MEDIUM_ORIGINAL_AMOUNT);
+            setAmount(MED_LOAD);
         } else {
-            setAmount(SMALL_ORIGINAL_AMOUNT);
+            setAmount(MIN_LOAD);
         }
         return () => {
             window.removeEventListener("resize", screenWidthChange);
@@ -37,11 +37,11 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
 
     const handleMoreCards = () => {
         if (width >= LARGE_WIDTH) {
-            setAmount(amount + LARGE_ORIGINAL_AMOUNT);
+            setAmount(amount + MAX_LOAD);
         } else if (width >= MEDIUM_WIDTH) {
-            setAmount(amount + SMALL_ORIGINAL_AMOUNT);
+            setAmount(amount + MED_LOAD);
         } else {
-            setAmount(amount + SMALL_ORIGINAL_AMOUNT);
+            setAmount(amount + MIN_LOAD);
         }
     };
 

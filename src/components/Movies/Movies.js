@@ -2,7 +2,9 @@ import React from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
+import UserInfo from "../UserInfo/UserInfo";
 import "./Movies.css";
+import {START_HINT} from "../../utils/constants";
 
 function Movies({
                     handleSearch,
@@ -32,6 +34,14 @@ function Movies({
                 <Preloader/>
             ) : (
                 <>
+                    {searchResult
+                        ? movies.length === 0 && (
+                        <UserInfo image={} title={searchResult}/>
+                    )
+                        : movies.length === 0 && (
+                        <UserInfo image={} title={START_HINT}/>
+                    )}
+
                     {movies.length !== 0 && (
                         <MoviesCardList
                             movies={movies}

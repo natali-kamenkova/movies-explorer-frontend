@@ -1,19 +1,21 @@
 export const CONFLICT_ERROR = 409;
 export const INTERNAL_SERVER_ERROR = 500;
-export const CONFLICT_MESSAGE = "Пользователь с таким email уже существует.";
-export const INTERNAL_SERVER_MESSAGE = "Внутренняя ошибка сервера, попробуйте позднее.";
-export const DEFAULT_MESSAGE_REGISTER = "Очень жаль, произошла ошибка при регистрации пользователя.";
-export const DEFAULT_MESSAGE_LOGIN = "Очень жаль, произошла ошибка при авторизации пользователя.";
-export const DEFAULT_MESSAGE_UPDATE = "Очень жаль, произошла ошибка при изменении данных пользователя.";
-export const WELCOME_MESSAGE = "Добро пожаловать!";
-export const SUCCESSFUL_UPDATE_MESSAGE = "Данные профиля успешно обновлены!";
-export const CONFLICT_MESSAGE_LIKE = "У вас нет прав для этого";
-export const SHORT_MOVIES_DURATION = 40;
-export const NEED_SEARCH_MESSAGE = "Для поиска нужно ввести ключевое слово";
-export const NOT_FOUND_SEARCH_MESSAGE = "Ничего не найдено";
+export const MESSAGE_EMAIL_ALREADY_EXISTS = "Пользователь с таким email уже существует.";
+export const MESSAGE_INTERNAL_ERROR = "Ошибка сервера, пожалуйста попробуйте позднее.";
+export const MESSAGE_REGISTER_FAIL = "Ошибка при регистрации пользователя.";
+export const MESSAGE_LOGIN_FAIL = "Ошибка при авторизации";
+export const MESSAGE_UPDATE_FAIL = "Ошибка изменения данных пользователя.";
+export const MESSAGE_WELCOME = "Добро пожаловать!";
+export const MESSAGE_USER_UPDATED = "Данные профиля успешно обновлены!";
+export const MESSAGE_CANT_LIKE = "У вас нет прав для этого";
+export const DURATION_SHORT = 40;
+export const MESSAGE_NO_KEY = "Для поиска нужно ввести ключевое слово";
+export const MESSAGE_NOTHING_FOUND = "Ничего не найдено";
 export const LARGE_WIDTH = 1280;
 export const MEDIUM_WIDTH = 768;
-export const LARGE_ORIGINAL_AMOUNT = 12;
-export const MEDIUM_ORIGINAL_AMOUNT = 10;
-export const SMALL_ORIGINAL_AMOUNT = 5;
+export const MAX_LOAD = 12;
+export const MED_LOAD = 10;
+export const MIN_LOAD = 5;
+export const START_HINT = "Введите запрос";
+
 
