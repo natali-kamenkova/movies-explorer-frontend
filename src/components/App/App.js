@@ -65,10 +65,10 @@ function App() {
     const [isChecked, setIsChecked] = useState(false);
     const [searchResult, setSearchResult] = useState("");
 
-    useEffect(() => {
+    /*useEffect(() => {
         checkToken();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loggedIn]);
+    }, [loggedIn]);*/
 
     function checkToken() {
         const token = localStorage.getItem("token");
@@ -89,8 +89,8 @@ function App() {
         if (loggedIn) {
             Promise.all([mainApi.getUserInfo(), mainApi.getUserMovies()])
                 .then(([userInfo, favoriteMovies]) => {
-                    setCurrentUser(userInfo.data);
-                    setIsFavoriteMovies(favoriteMovies.data);
+                    setCurrentUser(userInfo);
+                    setIsFavoriteMovies(favoriteMovies);
                 })
                 .catch((err) => {
                     setIsOpenInfoTooltip(true);
@@ -175,7 +175,7 @@ function App() {
         mainApi
             .editProfile(data)
             .then((userData) => {
-                setCurrentUser(userData.data);
+                setCurrentUser(userData);
                 setIsOpenInfoTooltip(true);
                 setIsImageForInfoTooltip(success);
                 setIsTextForInfoTooltip(MESSAGE_USER_UPDATED);
@@ -359,6 +359,7 @@ function App() {
     }
 
     const isLiked = (data) => {
+        return true;
         return favoriteMovies.some(
             (i) => i.movieId === data.id && i.owner === currentUser?._id
         );
