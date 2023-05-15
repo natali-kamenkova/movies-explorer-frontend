@@ -5,7 +5,8 @@ import "./SavedMovies.css";
 import Preloader from "../Preloader/Preloader";
 
 import {
-    DURATION_SHORT
+    DURATION_SHORT,
+    MESSAGE_NO_KEY
 } from "../../utils/constants";
 
 function SavedMovies({movies, isLiked, handleDislike}) {
@@ -34,16 +35,22 @@ function SavedMovies({movies, isLiked, handleDislike}) {
     }
 
     function submitSearchInSavedMovies(keyword, isChecked) {
-        setTimeout(() => setIsLoading(false), 2000);
+        if (keyword.length === 0) {
+            setErrorMessage(MESSAGE_NO_KEY)
+            return
+        }
+        setIsLoading(true);
         const searchResult = search(movies, keyword, isChecked);
         setSearchedMovies(searchResult);
         setKeyword(keyword);
         setIsChecked(isChecked);
         setIsFinish(true);
         setErrorMessage("");
+        setIsLoading(false);
     }
 
     function textChanged() {
+        setErrorMessage("")
     }
 
     useEffect(() => {

@@ -48,7 +48,6 @@ function SearchForm({changed, handleSearch, setPreloader, isLoading, errorMessag
     function handleSubmit(evt) {
         evt.preventDefault();
         handleSearch(keyword, isChecked);
-        setPreloader(true);
     }
 
     return (
