@@ -1,7 +1,7 @@
 export const CONFLICT_ERROR = 409;
 export const INTERNAL_SERVER_ERROR = 500;
 export const MESSAGE_EMAIL_ALREADY_EXISTS = "Пользователь с таким email уже существует.";
-export const MESSAGE_INTERNAL_ERROR = "Ошибка сервера, пожалуйста попробуйте позднее.";
+export const MESSAGE_INTERNAL_ERROR = "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз";
 export const MESSAGE_REGISTER_FAIL = "Ошибка при регистрации пользователя.";
 export const MESSAGE_LOGIN_FAIL = "Ошибка при авторизации";
 export const MESSAGE_UPDATE_FAIL = "Ошибка изменения данных пользователя.";

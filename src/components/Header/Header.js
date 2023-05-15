@@ -18,6 +18,10 @@ function Header({loggedIn}) {
     const headerClassName = `header ${
         location.pathname === "/" ? "header_color_dark" : "header_color_white"
     }`;
+
+    const headerTextClassName = `header__ ${
+        location.pathname === "/" ? "header__link_color_white" : "header__link_color_dark"
+    }`;
     
     return (<header className={headerClassName}>
             <div className="header__container">
@@ -44,7 +48,7 @@ function Header({loggedIn}) {
                         <>
                             <Link
                                 to="/movies"
-                                className={`header__link header__link_color_dark header__link_hidden  ${
+                                className={`header__link ${headerTextClassName} header__link_hidden  ${
                                     location.pathname === "/movies" ? "header__link_checked" : ""
                                 }`}
                             >
@@ -52,7 +56,7 @@ function Header({loggedIn}) {
                             </Link>
                             <Link
                                 to="/saved-movies"
-                                className={`header__link header__link_right header__link_color_dark header__link_hidden  ${
+                                className={`header__link header__link_right ${headerTextClassName} header__link_hidden  ${
                                     location.pathname === "/saved-movies"
                                         ? "header__link_checked"
                                         : ""
