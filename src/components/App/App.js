@@ -339,6 +339,10 @@ function App() {
             handleDislikeClick(dislike);
         }
     };
+    
+    function textChanged() {
+        setErrorMessageInSearch("")
+    }
 
     function handleDislikeClick(movie) {
         mainApi
@@ -391,6 +395,7 @@ function App() {
                         errorMessage={errorMessageInSearch}
                         setPreloader={setIsLoading}
                         searchResult={searchResult}
+                        changed={textChanged}
                     />
                     <ProtectedRoute
                         exact

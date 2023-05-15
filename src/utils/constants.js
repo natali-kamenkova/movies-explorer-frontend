@@ -16,6 +16,4 @@ export const MEDIUM_WIDTH = 768;
 export const MAX_LOAD = 12;
 export const MED_LOAD = 10;
 export const MIN_LOAD = 5;
-export const START_HINT = "Введите запрос";
-
 

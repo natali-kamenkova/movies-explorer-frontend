@@ -16,7 +16,7 @@ function Movies({
                     handleDislike,
                     isLiked,
                     sortingMovies,
-                    searchResult,
+                    changed,
                 }) {
     return (
         <section className="movies">
@@ -24,6 +24,7 @@ function Movies({
                 onCheckboxToggle={onCheckboxToggle}
                 isLoading={isLoading}
                 isChecked={isChecked}
+                changed={changed}
                 setPreloader={setPreloader}
                 errorMessage={errorMessage}
                 handleSearch={handleSearch}

@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
-function SearchForm({handleSearch, setPreloader, isLoading, errorMessage}) {
+function SearchForm({changed, handleSearch, setPreloader, isLoading, errorMessage}) {
     const submitButtonClassName = `search-form__button ${
         isLoading ? "search-form__button_disabled" : ""
     }`;
@@ -42,6 +42,7 @@ function SearchForm({handleSearch, setPreloader, isLoading, errorMessage}) {
 
     function handleKeyword(evt) {
         setKeyword(evt.target.value);
+        changed()
     }
 
     function handleSubmit(evt) {
