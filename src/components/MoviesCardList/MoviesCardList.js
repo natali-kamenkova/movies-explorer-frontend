@@ -50,7 +50,7 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
             <ul className="movies-card-list__movies">
                 {part.map((movie) => (
                     <MoviesCard
-                        key={movie.id || movie.id}
+                        key={movie._id || movie.id}
                         movie={movie}
                         handleLike={handleLike}
                         handleDislike={handleDislike}
