@@ -1,4 +1,4 @@
-_# movies-explorer-frontend
+# movies-explorer-frontend
 Этап 4: Функциональность на «React» и JS
 Наталия Каменкова
 
@@ -7,3 +7,6 @@ https://www.figma.com/file/UFBeWjGJe7tAHFKLFyeyNl/%D0%9C%D0%BE%D0%B9-%D0%94%D0%B
 
 ## Ссылка на сайт
 https://natali.nomoredomains.monster
+
+## Пул реквест
+https://github.com/natali-kamenkova/movies-explorer-frontend/pull/2
