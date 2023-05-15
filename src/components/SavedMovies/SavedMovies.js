@@ -3,14 +3,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 import Preloader from "../Preloader/Preloader";
-import like from "../../images/like.svg";
-import dislike from "../../images/dislike.svg";
 
 import {
-    DURATION_SHORT,
-    MESSAGE_NOTHING_FOUND,
+    DURATION_SHORT
 } from "../../utils/constants";
-import UserInfo from "../UserInfo/UserInfo";
 
 function SavedMovies({movies, isLiked, handleDislike}) {
     const [searchedMovies, setSearchedMovies] = useState([]);
@@ -66,20 +62,12 @@ function SavedMovies({movies, isLiked, handleDislike}) {
                 <Preloader/>
             ) : (
                 <>
-                    {movies.length === 0 ? (
-                        <UserInfo image={like} title="Вы еще не добавили фильмы в избранное"/>
-                    ) : (
-                        <>
-                            {isFinish && movies.length !== 0 && searchedMovies.length === 0 ? (
-                                <UserInfo image={dislike} title={MESSAGE_NOTHING_FOUND}/>
-                            ) : (
-                                <MoviesCardList
-                                    movies={isFinish ? searchedMovies : movies}
-                                    handleDislike={handleDislike}
-                                    isLiked={isLiked}
-                                />
-                            )}
-                        </>
+                    {movies.length !== 0 && (
+                        <MoviesCardList
+                            movies={isFinish ? searchedMovies : movies}
+                            handleDislike={handleDislike}
+                            isLiked={isLiked}
+                        />
                     )}
                 </>
             )}
