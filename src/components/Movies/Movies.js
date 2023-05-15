@@ -3,6 +3,9 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Movies.css";
+import {
+    MESSAGE_NOTHING_FOUND,
+} from "../../utils/constants";
 
 function Movies({
                     handleSearch,
@@ -16,6 +19,7 @@ function Movies({
                     handleDislike,
                     isLiked,
                     sortingMovies,
+                    searchResult,
                     changed,
                 }) {
     return (
@@ -29,11 +33,12 @@ function Movies({
                 errorMessage={errorMessage}
                 handleSearch={handleSearch}
             />
+
             {isLoading ? (
                 <Preloader/>
             ) : (
                 <>
-                    {movies.length !== 0 && (
+                    {movies.length !== 0 ? (
                         <MoviesCardList
                             movies={movies}
                             handleLike={handleLike}
@@ -41,6 +46,8 @@ function Movies({
                             isLiked={isLiked}
                             sortingMovies={sortingMovies}
                         />
+                    ) : (
+                        <span className="search-form__error" id="keywords-error">{MESSAGE_NOTHING_FOUND}</span>
                     )}
                 </>
             )}

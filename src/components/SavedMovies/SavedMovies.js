@@ -6,7 +6,8 @@ import Preloader from "../Preloader/Preloader";
 
 import {
     DURATION_SHORT,
-    MESSAGE_NO_KEY
+    MESSAGE_NO_KEY,
+    MESSAGE_NOTHING_FOUND,
 } from "../../utils/constants";
 
 function SavedMovies({movies, isLiked, handleDislike}) {
