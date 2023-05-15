@@ -9,4 +9,4 @@ https://www.figma.com/file/UFBeWjGJe7tAHFKLFyeyNl/%D0%9C%D0%BE%D0%B9-%D0%94%D0%B
 https://natali.nomoredomains.monster
 
 ## Пул реквест
-https://github.com/natali-kamenkova/movies-explorer-frontend/pull/2
+[пул реквест](https://github.com/natali-kamenkova/movies-explorer-frontend/pull/2)
