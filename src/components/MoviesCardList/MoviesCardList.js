@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {
-    MAX_LOAD,
     LARGE_WIDTH,
-    MED_LOAD,
     MEDIUM_WIDTH,
-    MIN_LOAD,
 } from "../../utils/constants";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
@@ -24,11 +21,11 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
         window.addEventListener("resize", screenWidthChange);
         setWidth(window.innerWidth);
         if (width >= LARGE_WIDTH) {
-            setAmount(MAX_LOAD);
+            setAmount(12);
         } else if (width >= MEDIUM_WIDTH) {
-            setAmount(MED_LOAD);
+            setAmount(8);
         } else {
-            setAmount(MIN_LOAD);
+            setAmount(5);
         }
         return () => {
             window.removeEventListener("resize", screenWidthChange);
@@ -37,11 +34,11 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
 
     const handleMoreCards = () => {
         if (width >= LARGE_WIDTH) {
-            setAmount(amount + MAX_LOAD);
+            setAmount(amount + 3);
         } else if (width >= MEDIUM_WIDTH) {
-            setAmount(amount + MED_LOAD);
+            setAmount(amount + 2);
         } else {
-            setAmount(amount + MIN_LOAD);
+            setAmount(amount + 2);
         }
     };
 
