@@ -309,12 +309,12 @@ function App() {
     }
 
     const handleLikeClick = (movie) => {
-        const like = favoriteMovies.some((i) => i.movieId === movie.id);
+        const like = favoriteMovies?.find((i) => i?.movieId === movie.id);
         if (!like) {
             mainApi
                 .createMovie(movie)
                 .then((res) => {
-                    setIsFavoriteMovies((movies) => [...movies, res.data]);
+                    setIsFavoriteMovies((movies) => [...movies, res]);
                 })
                 .catch((err) => {
                     if (err.includes(CONFLICT_ERROR)) {
@@ -335,7 +335,7 @@ function App() {
                     }
                 });
         } else {
-            const dislike = favoriteMovies.find((i) => i.movieId === movie.id);
+            const dislike = favoriteMovies.find((i) => i?.movieId === movie.id);
             handleDislikeClick(dislike);
         }
     };
@@ -359,7 +359,7 @@ function App() {
     }
 
     const isLiked = (data) => {
-        return favoriteMovies.some((i) => i.movieId === data.id);
+        return favoriteMovies?.find((i) => i?.movieId === data.id);
     };
 
     return (
