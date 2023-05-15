@@ -43,6 +43,9 @@ function SavedMovies({movies, isLiked, handleDislike}) {
         setErrorMessage("");
     }
 
+    function textChanged() {
+    }
+
     useEffect(() => {
         if (searchedMovies.length > 0) {
             const searchResult = search(movies, keyword, isChecked);
@@ -57,6 +60,7 @@ function SavedMovies({movies, isLiked, handleDislike}) {
                 setPreloader={setIsLoading}
                 isLoading={isLoading}
                 errorMessage={errorMessage}
+                changed={textChanged}
             />
             {isLoading ? (
                 <Preloader/>
