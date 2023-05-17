@@ -11,6 +11,14 @@
     background-color: #ffffff;
 }
 
+.navigation_color_emerald {
+    background-color: #073042;
+}
+
+.navigation_color_dark {
+    background-color: #202020;
+}
+
 .navigation__close-button {
     position: absolute;
     top: 23px;
@@ -66,7 +74,7 @@
 }
 
 .navigation__link_checked {
-    border-bottom: 2px solid #000000;;
+    border-bottom: 2px solid #000000;
 }
 
 .navigation__link-image {

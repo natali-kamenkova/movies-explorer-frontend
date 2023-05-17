@@ -36,7 +36,7 @@
 .header__link {
     text-decoration: none;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     display: flex;
@@ -44,7 +44,6 @@
     align-items: center;
     height: 32px;
     cursor: pointer;
-    transition: opacity 0.3s ease;
 }
 
 .header__link:hover {
@@ -54,6 +53,10 @@
 .header__link-image {
     width: 100px;
     height: 32px;
+}
+
+.header__link_checked {
+    font-weight: 900;
 }
 
 .header__link_color_white {

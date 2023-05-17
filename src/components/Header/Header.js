@@ -6,7 +6,7 @@ import profile from "../../images/profile.png";
 import {Link, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header({loggedIn}) {
     const [openNavigation, setIsOpenBurgerMenu] = useState(false);
 
     const location = useLocation();
@@ -15,60 +15,79 @@ function Header() {
         setIsOpenBurgerMenu(!openNavigation);
     }
 
-    const headerClassName = `header ${location.pathname === "/" ? "header_color_dark" : "header_color_white"}`;
+    const headerClassName = `header ${
+        location.pathname === "/" ? "header_color_dark" : "header_color_white"
+    }`;
 
+    const headerTextClassName = `header__ ${
+        location.pathname === "/" ? "header__link_color_white" : "header__link_color_dark"
+    }`;
+    
     return (<header className={headerClassName}>
-        <div className="header__container">
-            <Link to="/">
-                <img className="logo" src={logo} alt="Логотип"/>
-            </Link>
-            <div className="header__links">
-                {location.pathname === "/" ? ( // main
-                    <>
-                        <Link
-                            to="/signup"
-                            className="header__link header__link_color_white"
-                        >
-                            Регистрация
-                        </Link>
-                        <Link
-                            to="/signin"
-                            className="header__link header__link_color_green"
-                        >
-                            Войти
-                        </Link>
-                    </> // others
-                ) : (<>
-                    <Link
-                        to="/movies"
-                        className="header__link header__link_color_dark header__link_hidden"
-                    >
-                        Фильмы
-                    </Link>
-                    <Link
-                        to="/saved-movies"
-                        className="header__link header__link_right header__link_color_dark header__link_hidden"
-                    >
-                        Сохранённые фильмы
-                    </Link>
-                    <Link to="/profile" className="header__link">
-                        <img
-                            className="header__link-image header__link_hidden"
-                            src={profile}
-                            alt="Профиль"
-                        />
-                    </Link>
-                    <button
-                        aria-label="Open navigation"
-                        className="header__burger-menu"
-                        type="button"
-                        onClick={handleBurgerMenuButton}
-                    />
-                </>)}
+            <div className="header__container">
+                <Link to="/">
+                    <img className="logo" src={logo} alt="Логотип"/>
+                </Link>
+                <div className="header__links">
+                    {!loggedIn ? (
+                        <>
+                            <Link
+                                to="/signup"
+                                className="header__link header__link_color_white"
+                            >
+                                Регистрация
+                            </Link>
+                            <Link
+                                to="/signin"
+                                className="header__link header__link_color_green"
+                            >
+                                Войти
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                to="/movies"
+                                className={`header__link ${headerTextClassName} header__link_hidden  ${
+                                    location.pathname === "/movies" ? "header__link_checked" : ""
+                                }`}
+                            >
+                                Фильмы
+                            </Link>
+                            <Link
+                                to="/saved-movies"
+                                className={`header__link header__link_right ${headerTextClassName} header__link_hidden  ${
+                                    location.pathname === "/saved-movies"
+                                        ? "header__link_checked"
+                                        : ""
+                                }`}
+                            >
+                                Сохранённые фильмы
+                            </Link>
+                            <Link to="/profile" className="header__link">
+                                <img
+                                    className="header__link-image header__link_hidden"
+                                    src={profile}
+                                    alt="Профиль"
+                                />
+                            </Link>
+                            <button
+                                aria-label="Open navigation"
+                                className="header__burger-menu"
+                                type="button"
+                                onClick={handleBurgerMenuButton}
+                            />
+                        </>
+                    )}
+                </div>
             </div>
-        </div>
-        {openNavigation ? (<Navigation handleBurgerMenuButton={handleBurgerMenuButton}/>) : ("")}
-    </header>);
+            {openNavigation ? (
+                <Navigation handleBurgerMenuButton={handleBurgerMenuButton}/>
+            ) : (
+                ""
+            )}
+        </header>
+    );
 }
 
 export default Header;
