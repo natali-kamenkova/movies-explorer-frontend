@@ -12,5 +12,13 @@ export const DURATION_SHORT = 40;
 export const MESSAGE_NO_KEY = "Нужно ввести ключевое слово";
 export const MESSAGE_NOTHING_FOUND = "Ничего не найдено";
 export const LARGE_WIDTH = 1280;
+export const LARGE_WIDTH_LOAD = 12;
+export const LARGE_WIDTH_EXTRA_LOAD = 3;
+
 export const MEDIUM_WIDTH = 768;
+export const MEDIUM_WIDTH_LOAD = 8;
+export const MEDIUM_WIDTH_EXTRA_LOAD = 2;
+
+export const SMALL_WIDTH_LOAD = 5;
+export const SMALL_WIDTH_EXTRA_LOAD = 2;
 

@@ -45,6 +45,7 @@ function Movies({
                             handleDislike={handleDislike}
                             isLiked={isLiked}
                             sortingMovies={sortingMovies}
+                            showAll={false}
                         />
                     ) : (
                         <span className="search-form__error" id="keywords-error">{MESSAGE_NOTHING_FOUND}</span>

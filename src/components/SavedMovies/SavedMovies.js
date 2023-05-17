@@ -79,6 +79,7 @@ function SavedMovies({movies, isLiked, handleDislike}) {
                             movies={isFinish ? searchedMovies : movies}
                             handleDislike={handleDislike}
                             isLiked={isLiked}
+                            showAll={true}
                         />
                     )}
                 </>

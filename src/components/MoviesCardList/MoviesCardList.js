@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from "react";
 import {
     LARGE_WIDTH,
+    LARGE_WIDTH_LOAD,
+    LARGE_WIDTH_EXTRA_LOAD,
     MEDIUM_WIDTH,
+    MEDIUM_WIDTH_LOAD,
+    MEDIUM_WIDTH_EXTRA_LOAD,
+    SMALL_WIDTH_LOAD,
+    SMALL_WIDTH_EXTRA_LOAD
 } from "../../utils/constants";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 
-function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
+function MoviesCardList({movies, isLiked, handleLike, handleDislike, showAll}) {
     const [width, setWidth] = useState(0);
     const [amount, setAmount] = useState(0);
-    const part = movies.slice(0, amount);
+    const part = showAll ? movies : movies.slice(0, amount);
 
     function screenWidthChange() {
         setTimeout(() => {
@@ -21,11 +27,11 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
         window.addEventListener("resize", screenWidthChange);
         setWidth(window.innerWidth);
         if (width >= LARGE_WIDTH) {
-            setAmount(12);
+            setAmount(LARGE_WIDTH_LOAD);
         } else if (width >= MEDIUM_WIDTH) {
-            setAmount(8);
+            setAmount(MEDIUM_WIDTH_LOAD);
         } else {
-            setAmount(5);
+            setAmount(SMALL_WIDTH_LOAD);
         }
         return () => {
             window.removeEventListener("resize", screenWidthChange);
@@ -34,11 +40,11 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
 
     const handleMoreCards = () => {
         if (width >= LARGE_WIDTH) {
-            setAmount(amount + 3);
+            setAmount(amount + LARGE_WIDTH_EXTRA_LOAD);
         } else if (width >= MEDIUM_WIDTH) {
-            setAmount(amount + 2);
+            setAmount(amount + MEDIUM_WIDTH_EXTRA_LOAD);
         } else {
-            setAmount(amount + 2);
+            setAmount(amount + SMALL_WIDTH_EXTRA_LOAD);
         }
     };
 
@@ -55,7 +61,7 @@ function MoviesCardList({movies, isLiked, handleLike, handleDislike}) {
                     />
                 ))}
             </ul>
-            {amount >= movies.length ? null : (
+            {(showAll || amount >= movies.length) ? null : (
                 <button
                     className="movies-card-list__more-button"
                     aria-label="Load more movies"
