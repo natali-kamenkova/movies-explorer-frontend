@@ -249,7 +249,9 @@ function App() {
         }
     }, [beatFilmMovies, keyword, isChecked]);
 
-    function submitSearch(keyword, isChecked) {
+    function submitSearch(keyword, isChecked, checkboxIsTrigger) {
+        setErrorMessage("");
+        
         if (keyword !== "") {
             setTimeout(() => setIsLoading(false), 2000);
             setErrorMessage("");
@@ -264,7 +266,9 @@ function App() {
             }
         } else {
             setTimeout(() => setIsLoading(false), 1000);
-            setErrorMessageInSearch(MESSAGE_NO_KEY);
+            if (!checkboxIsTrigger) {
+                setErrorMessageInSearch(MESSAGE_NO_KEY);
+            }
             setSearchedMovies([]);
         }
     }

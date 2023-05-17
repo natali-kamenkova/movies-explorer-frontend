@@ -35,8 +35,8 @@ function SavedMovies({movies, isLiked, handleDislike}) {
         return result;
     }
 
-    function submitSearchInSavedMovies(keyword, isChecked) {
-        if (keyword.length === 0) {
+    function submitSearchInSavedMovies(keyword, isChecked, checkboxIsTrigger) {
+        if (!checkboxIsTrigger && keyword.length === 0) {
             setErrorMessage(MESSAGE_NO_KEY)
             return
         }

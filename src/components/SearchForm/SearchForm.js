@@ -33,7 +33,7 @@ function SearchForm({changed, handleSearch, setPreloader, isLoading, errorMessag
 
     function toggleCheckbox(isChecked) {
         setIsChecked(isChecked);
-        handleSearch(keyword, isChecked);
+        handleSearch(keyword, isChecked, true);
     }
 
     function handleCheckbox(evt) {
@@ -47,7 +47,7 @@ function SearchForm({changed, handleSearch, setPreloader, isLoading, errorMessag
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        handleSearch(keyword, isChecked);
+        handleSearch(keyword, isChecked, false);
     }
 
     return (
